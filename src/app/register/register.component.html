@@ -1,0 +1,39 @@
+<form [formGroup]='registerForm' (ngSubmit)='onSubmit()'>
+
+    <!-- Firstname -->
+    <div>
+        <input type='text' formControlName="firstname" placeholder="Votre prénom">
+        <div *ngIf="submitted && form.firstname.errors">
+            <div *ngIf='form.firstname.errors.required'>Vous devez renseigner un pseudo</div>
+            <div *ngIf='form.firstname.errors.pattern'>Pseudo invalide</div>
+        </div>
+    </div>
+
+    <!-- Lastname -->
+    <div>
+        <input type='password' formControlName="password" placeholder="Votre password">
+        <div *ngIf="submitted && form.password.errors">
+            <div *ngIf='form.password.errors.required'>Vous devez renseigner un mot de passe</div>
+            <div *ngIf='form.password.errors.minLength'>Votre mot de passe doit faire au moins 6 caractères</div>
+        </div>
+    </div>
+
+    <!-- email -->
+    <div>
+        <input type='email' formControlName="email" placeholder="Votre email">
+        <div *ngIf="submitted && form.email.errors">
+            <div *ngIf='form.email.errors.required'>Vous devez renseigner un email</div>
+            <div *ngIf='form.email.errors.email'>Email invalide</div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary"> Valider le formulaire</button>
+    </div>
+</form>
+
+<div>
+    <ul>
+        <li *ngFor='let userInfo of userInfoList'>{{ userInfo.firstname }}</li>
+    </ul>
+</div>
